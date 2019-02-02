@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CALCULATOR</title>
+        <!--<script src="jstut.js"></script>-->
+        <!--<div>Can you see this</div>-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Calculator App</div><br><br>
+        
+        <p id="phFirstOp"></p> <!-- ph for placeholder-->
+        <p id="phSecondOp"></p>
+        <p id="phOpNotValid"></p>
+        <p id="phResult"></p>
+        
+        
+<script>
+            
+            
+//    document.write("Hello World <br\>");
+//    document.getElementById("phResult").innerHTML = "I \n\
+//        should be before Hello Wolrd";
+//
+//    document.getElementById("phFirstOp").innerHTML = "I'm \n\
+//        at very beginning <br\>";
+    
+//    var Animal = {
+//      sName: "Animal", 
+//      sSound: "humm humm", 
+//      walk: function(){
+//          document.write(this.sName, " makes sound ", 
+//            this.sSound, " and walks<br\>");
+//      },
+//      Dog:{
+//          sName: "Dog",
+//          sSound: "grrrrrr",
+//          walk: function(){
+//              document.write(this.sName, " makes sound ", 
+//                this.sSound, " and walks fast<br\>");
+//          },
+//          parent: function(){
+//              document.write(Animal.sName, " makes sound ", 
+//                Animal.sSound, "<br\>");
+//          },
+//          Alsatian: {
+//              sName: "Alsatian", 
+//              sSound: "Woof Woof", 
+//              walk: function(){
+//                  document.write(this.sName, " makes sound ", 
+//                    this.sSound, " and walks very fast<br\>");
+//              },
+//              parent: function(){
+//                  document.write(Dog.sName, " makes sound ", 
+//                    Dog.sSound, "<br\>");
+//                }
+//              
+//          }
+//              
+//          
+//      }
+//      
+//    };  // Object Animal Finished
+//    
+//    Animal.Dog.Alsatian.attr =  function(){
+//        document.write("This animal is hungry all the time <br\>");
+//    };
+    
+//    document.write("Calling Animal.walk: <br\>");
+//    Animal.walk();
+//    document.write("Calling Animal.Dog.walk: <br\>");
+//    Animal.Dog.walk();
+//    document.write("Calling Animal.Dog.Alsatian.walk: <br\>");
+//    Animal.Dog.Alsatian.walk();
+//    
+//    document.write("Calling Animal.Dog.Alsatian.attr: <br\>");
+//    Animal.Dog.Alsatian.attr();
+//    
+//    for (i in Animal){
+//        document.write(i, " : ", Animal[i], "<br\>");
+//    }
+//    document.write("<br\><br\><br\>");
+//    for (i in Animal.Dog){
+//        document.write(i, " : ", Animal.Dog[i], "<br\>");
+//    }
+//    document.write("<br\><br\><br\>");
+//    for (i in Animal.Dog.Alsatian){
+//        document.write(i, " : ", Animal.Dog.Alsatian[i], "<br\>");
+//    }
+
+
+    var Vehicle = {
+        nTotTire: 4, 
+        sName: "Vehicle",
+        print_info: function(){
+            return "My name is " +  this.sName + "<br\> and I've \n\
+            " +  this.nTotTire +  " tires<br\>";
+        }
+    };
+
+    //veh = new Vehicle;
+//    document.write("Value of Vehicle.print_info: ", Vehicle.print_info(), "<br\>\n\
+//        <br\><br\>");
+//    document.write("My name is ", Vehicle.sName, 
+//        " and I've ", Vehicle.nTotTire, " tires<br\><br\><br\>");
+
+
+    // Constructors
+    function Phone(sName, sModel){
+        this.sName = sName;
+        this.sModel = sModel;
+        this.info = function(){
+            return "Phone Name: " + this.sName
+                + " And Phone Model: " + this.sModel + "<br\>";
+        };
+    }
+    
+    function TV(sName, sModel){
+        return sName + sModel;
+    }
+    
+    myPhone = new Phone("Samsung", "S8+");
+    myOtherPhone = new Phone ("Iphone", "X");
+    myWifePhone = new Phone("HTC", "AwesomeV");
+    
+//    document.write(myPhone.info());
+//    document.write(myOtherPhone.info());
+//    document.write(myWifePhone.info());
+//    
+//    document.write("myWifePhone is instance of Phone? ", myWifePhone
+//                instanceof TV);
+
+
+    function Shape(sName, nRad, nLength){
+        this.sName = sName;
+        this.nRad = nRad;
+        this.nLength = nLength;
+        this.circle_area = function(){
+            return (Math.PI * nRad * nRad);
+        };
+        this.square_area = function(){
+            return (nLength * nLength);
+        };
+    }
+    
+    
+
+    
+    var circle = new Shape("Circle", 5, 0);
+    
+    document.write("Value of circle area: ", 
+        circle.circle_area(), "<br\>");
+    
+    Shape.prototype.circle_perimeter = function(){
+      return (2*Math.PI*this.nRad)  ;
+    };
+    document.write("Value of circle perimeter: ", 
+        circle.circle_perimeter(), "<br\>");
+    document.write("is square_areas property of obj circle: ", 
+        circle.hasOwnProperty("square_areas"));
+    document.write("<br\>");
+    
+    Array.prototype.inArray = function inArray(nVal){
+        document.write("Value of this.length: ", this.length);
+        for (i=0; i<this.length; i++){
+            document.write("Value of aArr[i]: ", this[i]);
+            document.write("Value of nVal: ", nVal);
+            if (nVal === this[i])
+                return true;
+        }
+        return false; 
+    };
+        
+    var aArray = [1, 2, 3, 4, 5, 6, 7];
+    for (i=0; i<aArray.length; i++) 
+        document.write(aArray[i], " ");
+    document.write("<br\>");
+    nTestVal = 7;
+    document.write("Is value: ", nTestVal, " inside aArray: ",
+        aArray.inArray(nTestVal));
+        
+        
+        var addStuff = {
+  sum: function(num1, num2){
+    return num1 + num2;
+  }
+};
+ 
+document.write("1 + 2 = ", addStuff.sum(1,2) + "<br />");
+
+//var Point = function(xPos, yPos){
+//  this.xPos = xPos;
+//  this.yPos = yPos;
+//};
+// 
+//Point.prototype.getPos = function(){
+//  return "X: " + this.xPos + " Y: " + this.yPos;
+//};
+// 
+//var point = new Point(100, 200);
+// 
+//document.write("Point Pos : " + point.getPos() + "<br />");
+
+class Point {
+  constructor(xPos, yPos){
+    this.xPos = xPos;
+    this.yPos = yPos;
+  }
+ 
+  getPos(){
+    return "X: " + this.xPos + " Y: " + this.yPos;
+  }
+}
+ 
+var point = new Point(100,200);
+ 
+document.write("Point Pos : " + point.getPos() + "<br />");
+
+
+// EC6 WAY
+class Animal {
+  constructor(name){
+    this.name = name;
+  }
+ 
+  toString(){
+    return "Animal is named " + this.name;
+  }
+ 
+  // We can create static functions as well
+  static getAnimal(){
+    return new Animal("No Name");
+  }
+ 
+}
+ 
+class Dog extends Animal{
+  constructor(name, owner){
+ 
+    // We can call the super class now
+    super(name);
+    this.owner = owner;
+  }
+ 
+  toString(){
+ 
+    // You can call super class methods as well
+    return super.toString() + "<br />Dog is named " + this.name;
+  }
+}
+ 
+var rover = new Dog("Rover", "Paul");
+ 
+document.write(rover.name + " is owned by " + rover.owner + "<br />");
+ 
+document.write(rover.toString() + "<br />");
+ 
+// Call the static function
+var bowser = Animal.getAnimal();
+document.write("Bowser info : " + bowser.toString() + "<br />");
+   
+    
+    
+    
+    
+            
+
+
+</script>
+
+<!-- Change text color on mouse rollover and roll out-->
+<!--<a onmouseover="this.style.color='red';"
+onmouseout="this.style.color='blue';"
+ondblclick="this.text='You Double Clicked Me'"
+onmousedown="this.text='Don\'t Press So hard'"
+onmouseup="this.text='Thank You'">Make me Red</a><br />
+
+Mouse X: <input type="text" id="mouseX"><br />
+Mouse Y: <input type="text" id="mouseY"><br />-->
+
+<!--<script>
+ 
+function getChar(event) {
+ 
+  // event.which returns the key or mouse button clicked
+  if (event.which == null) {
+ 
+    // Return the char if not a special character
+    return String.fromCharCode(event.keyCode); // IE
+  } else if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which);   // Other Browsers
+  } else {
+    return null; // Special Key Clicked
+  }
+}
+
+ 
+  // Change the input element value
+//  document.getElementById('mouseInput').value = "?Clicked on image with button " + event.button;
+
+ 
+// Get mouse x y coordinates
+document.body.onmousemove = function(e) {
+    e = e || window.event;
+ 
+    // Get pageX, pageY : Mouse position relative to the html doc
+    var pageX = e.pageX;
+    var pageY = e.pageY;
+    if (pageX === undefined) {
+ 
+        // clientX, clientY : Mouse position relative to the browsers viewport
+        // scrollLeft, scrollTop : Pixels an element is scrolled left or
+        // from the top
+        pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+ 
+    document.getElementById('mouseX').value = pageX;
+    document.getElementById('mouseY').value = pageY;
+};
+
+ 
+</script>-->
+
+
+    </body>
+</html>
